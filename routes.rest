@@ -1,0 +1,35 @@
+//LOCAL
+### get all characters
+GET http://localhost:3000/characters
+
+### get one characters by id
+GET http://localhost:3000/characters/68308c69c01a84e165f6cbce
+
+### Create contact
+POST http://localhost:3000/characters
+Content-Type: application/json
+
+{
+    "firstName": "Shallan",
+    "alias": "Radiant, Veil",
+    "powers": "Lightweaving, Soulcasting, shardblade",
+    "alignment": "Rides the line of doing the right thing, and serving self interest",
+    "planet": "Roshar",
+    "books": "Stormlight Archive books 1-5"
+}
+
+### Update contact
+PUT http://localhost:3000/characters/68308c69c01a84e165f6cbce
+Content-Type: application/json
+
+{
+   "firstName": "Shallan",
+    "alias": "Radiant",
+    "powers": "Lightweaving, Soulcasting, shardplate and blade",
+    "alignment": "Has chosen the side of the good, working against ghostbloods",
+    "planet": "Roshar",
+    "books": "Stormlight Archive books 1-5"
+}
+
+### Delete contact
+DELETE http://localhost:3000/characters/68308c69c01a84e165f6cbce
