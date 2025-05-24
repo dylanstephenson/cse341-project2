@@ -7,5 +7,6 @@ router.get('/', (req, res) => {
   res.send('Welcome to the cosmere!');
 });
 router.use('/characters', require('./characters'));
+router.use('/books', require('./books'))
 
 module.exports = router;
