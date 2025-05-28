@@ -1,16 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const charController = require('../controllers/characters');
-const { validateChar, validateObjectId } = require('../validators/charValidator')
+const { validateChar, validateObjectId } = require('../validators/charValidator');
+const { isAuthenticated } = require('../middleware/authenticate');
 
 // Get data from database
 router.get('/', charController.getAll);
 router.get('/:id', validateObjectId, charController.getSingle);
 
-router.post('/', validateChar, charController.createChar);
+router.post('/', [isAuthenticated, validateChar], charController.createChar);
 
-router.put('/:id', [...validateObjectId, ...validateChar], charController.updateChar);
+router.put('/:id', [isAuthenticated, validateObjectId, validateChar], charController.updateChar);
 
-router.delete('/:id', validateObjectId, charController.deleteChar);
+router.delete('/:id', [isAuthenticated, validateObjectId], charController.deleteChar);
 
 module.exports = router;
